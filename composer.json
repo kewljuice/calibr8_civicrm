@@ -58,13 +58,13 @@
     "enable-patching": true,
     "patches": {
       "civicrm/civicrm-core": {
-        "Fix create user": "./patches/civicrm-core-d8-create-user-fix.patch",
-        "Fix ckeditor path": "./patches/civicrm_core_fix_ckeditor_resource_location.patch"
+        "Fix create CiviCRM User": "https://patch-diff.githubusercontent.com/raw/civicrm/civicrm-core/pull/12635.patch",
+        "Fix CiviCRM ckeditor path": "https://patch-diff.githubusercontent.com/raw/civicrm/civicrm-core/pull/12197.patch"
       },
       "civicrm/civicrm-drupal-8": {
         "Refactor determineActiveTheme to be easier to grok": "https://github.com/civicrm/civicrm-drupal-8/compare/master...borisson:improve-active-theme.patch",
         "Refactor path processor and document behavior with unit-test": "https://patch-diff.githubusercontent.com/raw/civicrm/civicrm-drupal-8/pull/14.patch",
-        "Fix logout on user create": "./patches/fix_user_create_logout_issue.patch"
+        "Fix logout on user create": "https://patch-diff.githubusercontent.com/raw/civicrm/civicrm-drupal-8/pull/16.patch"
       }
     }
   },
