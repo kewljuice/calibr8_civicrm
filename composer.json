@@ -1,0 +1,83 @@
+{
+  "name": "calibrate/calibr8_civicrm",
+  "description": "Calibrate module for CiviCRM + Drupal 8 projects",
+  "type": "drupal-custom",
+  "keywords": [
+    "Calibr8",
+    "Drupal 8",
+    "CiviCRM"
+  ],
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Wannes De Roy",
+      "role": "Full-stack & CiviCRM developer"
+    },
+    {
+      "name": "Wouter Hechtermans",
+      "role": "CiviCRM lead"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/civicrm/civicrm-packages"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/civicrm/zetacomponents-mail.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/wannesderoy/civicrm-libraries"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/civicrm/civicrm-drupal-8"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/wannesderoy/civicrm-l10n"
+    }
+  ],
+  "require": {
+    "civicrm/civicrm-core": "^5.4",
+    "civicrm/civicrm-l10n": "dev-master",
+    "civicrm/civicrm-packages": "^5.4",
+    "civicrm/civicrm-libraries": "^1.0",
+    "civicrm/civicrm-drupal-8": "dev-master",
+    "drupal/redis": "^1.0",
+    "drupal/webform_civicrm": "5.x-dev"
+  },
+  "require-dev": {
+    "drupal/drupal-extension": "~3.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "enable-patching": true,
+    "patches": {
+      "civicrm/civicrm-core": {
+        "Fix create user": "./patches/civicrm-core-d8-create-user-fix.patch",
+        "Fix ckeditor path": "./patches/civicrm_core_fix_ckeditor_resource_location.patch"
+      },
+      "civicrm/civicrm-drupal-8": {
+        "Refactor determineActiveTheme to be easier to grok": "https://github.com/civicrm/civicrm-drupal-8/compare/master...borisson:improve-active-theme.patch",
+        "Refactor path processor and document behavior with unit-test": "https://patch-diff.githubusercontent.com/raw/civicrm/civicrm-drupal-8/pull/14.patch",
+        "Fix logout on user create": "./patches/fix_user_create_logout_issue.patch"
+      }
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "cp -rf ./vendor/civicrm/civicrm-packages ./vendor/civicrm/civicrm-core/packages/",
+      "cp -rf ./web/libraries/civicrm/bower_components ./vendor/civicrm/civicrm-core",
+      "cp -rf ./web/libraries/civicrm-l10n ./vendor/civicrm/civicrm-core/l10n"
+    ],
+    "post-update-cmd": [
+      "cp -rf ./vendor/civicrm/civicrm-packages ./vendor/civicrm/civicrm-core/packages/",
+      "cp -rf ./web/libraries/civicrm/bower_components ./vendor/civicrm/civicrm-core",
+      "cp -rf ./web/libraries/civicrm-l10n ./vendor/civicrm/civicrm-core/l10n"
+    ]
+  }
+}
