@@ -2,7 +2,6 @@
 .idea
 
 # Ignore caches.
-*.sql
 *.tar
 *.zip
 *.gz

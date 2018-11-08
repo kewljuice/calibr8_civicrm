@@ -9,10 +9,11 @@ $DOCKER_EXEC composer config repositories.civicrm-libraries vcs https://github.c
 $DOCKER_EXEC composer config repositories.civicrm-drupal-8 vcs https://github.com/civicrm/civicrm-drupal-8
 $DOCKER_EXEC composer config repositories.civicrm-l10n vcs https://github.com/wannesderoy/civicrm-l10n
 
-# Add 'vcs' folders to composer.json.
+# Get 'vcs' folders.
 $DOCKER_EXEC composer install
 
 # Copy folders to right directories.
 cp -rf $PROJECT_ROOT/data/www/vendor/civicrm/civicrm-packages $PROJECT_ROOT/data/www/vendor/civicrm/civicrm-core/packages/
 cp -rf $PROJECT_ROOT/data/www/web/libraries/civicrm/bower_components $PROJECT_ROOT/data/www/vendor/civicrm/civicrm-core
 cp -rf $PROJECT_ROOT/data/www/web/libraries/civicrm-l10n $PROJECT_ROOT/data/www/vendor/civicrm/civicrm-core/l10n
+
