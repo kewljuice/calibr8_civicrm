@@ -2,6 +2,9 @@
   "name": "kewljuice/calibr8_civicrm",
   "description": "Calibrate module for CiviCRM + Drupal 8 projects",
   "type": "drupal-custom",
+  "require": {
+    "composer/installers": "~1.0"
+  },
   "keywords": [
     "Calibr8",
     "Drupal 8",

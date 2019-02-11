@@ -1,0 +1,107 @@
+<?php
+
+/**
+ * Import 'CiviCRM' permissions.
+ */
+function calibr8_civicrm_update_8001() {
+  $permissions_by_role = <<<JSON
+{
+   "anonymous":[
+      "access all custom data",
+      "edit contributions",
+      "edit my contact",
+      "make online contributions",
+      "profile listings",
+      "profile listings and forms",
+      "register for events",
+      "view event info",
+      "view public CiviMail content"
+   ],
+   "authenticated":[
+      "access CiviMail subscribe\/unsubscribe pages",
+      "access all custom data",
+      "access uploaded files",
+      "edit contributions",
+      "edit memberships",
+      "edit my contact",
+      "make online contributions",
+      "profile create",
+      "profile edit",
+      "profile listings",
+      "profile listings and forms",
+      "profile view",
+      "register for events",
+      "view event info",
+      "view my contact",
+      "view my invoices",
+      "view public CiviMail content"
+   ],
+   "webmaster":[
+      "access AJAX API",
+      "access CiviCRM",
+      "access CiviContribute",
+      "access CiviEvent",
+      "access CiviMail",
+      "access CiviMember",
+      "access CiviReport",
+      "access Contact Dashboard",
+      "access Report Criteria",
+      "access all custom data",
+      "access contact reference fields",
+      "access deleted contacts",
+      "access uploaded files",
+      "add contact notes",
+      "add contacts",
+      "administer CiviCRM",
+      "administer Reports",
+      "administer Tagsets",
+      "administer dedupe rules",
+      "administer private reports",
+      "administer reserved groups",
+      "administer reserved reports",
+      "administer reserved tags",
+      "delete activities",
+      "delete in CiviContribute",
+      "delete in CiviEvent",
+      "delete in CiviMail",
+      "delete in CiviMember",
+      "edit all contacts",
+      "edit all events",
+      "edit api keys",
+      "edit contributions",
+      "edit event participants",
+      "edit groups",
+      "edit inbound email basic information",
+      "edit inbound email basic information and content",
+      "edit message templates",
+      "edit own api keys",
+      "edit system workflow message templates",
+      "edit user-driven message templates",
+      "force merge duplicate contacts",
+      "import contacts",
+      "make online contributions",
+      "manage event profiles",
+      "manage tags",
+      "merge duplicate contacts",
+      "profile edit",
+      "register for events",
+      "save Report Criteria",
+      "send SMS",
+      "translate CiviCRM",
+      "view all activities",
+      "view all contacts",
+      "view all notes",
+      "view event participants"
+   ]
+}
+JSON;
+  $permissions_by_role = json_decode($permissions_by_role, TRUE);
+  foreach ($permissions_by_role as $role => $perms) {
+    $user_role = \Drupal\user\Entity\Role::load($role);
+    if (isset($user_role)) {
+      foreach ($perms as $perm) {
+        $user_role->grantPermission($perm);
+      }
+    }
+  }
+}

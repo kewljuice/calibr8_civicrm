@@ -3,7 +3,7 @@ type: module
 description: Everything functionally related to Drupal 8 and CiviCRM.
 core: 8.x
 package: Calibrate
-version: '8.x-1.0'
+version: '8.x-1.1'
 dependencies:
 - civicrm
 - civicrmtheme
