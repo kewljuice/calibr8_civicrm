@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Import 'CiviCRM' permissions.
+ * Implements hook_update_8001().
  */
 function calibr8_civicrm_update_8001() {
   $permissions_by_role = <<<JSON
@@ -104,4 +104,12 @@ JSON;
       }
     }
   }
+}
+
+/**
+ * Implements hook_install().
+ */
+function my_module_install() {
+  // Run update 8001.
+  calibr8_civicrm_update_8001();
 }
