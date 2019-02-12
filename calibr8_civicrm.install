@@ -102,14 +102,15 @@ JSON;
       foreach ($perms as $perm) {
         $user_role->grantPermission($perm);
       }
+      $user_role->save();
     }
   }
 }
 
 /**
- * Implements hook_install().
+ * Implements hook_post_install().
  */
-function my_module_install() {
+function calibr8_civicrm_post_install() {
   // Run update 8001.
   calibr8_civicrm_update_8001();
 }
