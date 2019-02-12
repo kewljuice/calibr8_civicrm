@@ -100,6 +100,7 @@ JSON;
     $user_role = \Drupal\user\Entity\Role::load($role);
     if (isset($user_role)) {
       foreach ($perms as $perm) {
+        \Drupal::logger('calibr8_civicrm')->notice("Set $perm for $user.");
         $user_role->grantPermission($perm);
       }
       $user_role->save();
@@ -108,9 +109,9 @@ JSON;
 }
 
 /**
- * Implements hook_post_install().
+ * Implements hook_install().
  */
-function calibr8_civicrm_post_install() {
+function calibr8_civicrm_install() {
   // Run update 8001.
   calibr8_civicrm_update_8001();
 }
