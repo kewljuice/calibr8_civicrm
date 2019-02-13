@@ -27,7 +27,7 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: civicrm_field_contact_default_formatter
+    type: civicrm_field_contact_vcard_formatter
     region: content
   field_civicrm_event:
     weight: 2
