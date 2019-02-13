@@ -69,8 +69,7 @@ display:
         type: html_list
         options:
           grouping:
-            -
-              field: sort_name
+            - field: sort_name
               rendered: true
               rendered_strip: false
           row_class: ''
