@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * @file
+ * Install file for 'calibr8_civicrm'.
+ */
+
+use Drupal\user\Entity\Role;
+
+/**
  * Implements hook_update_8001().
  */
 function calibr8_civicrm_update_8001() {
@@ -97,10 +104,10 @@ function calibr8_civicrm_update_8001() {
 JSON;
   $permissions_by_role = json_decode($permissions_by_role, TRUE);
   foreach ($permissions_by_role as $role => $perms) {
-    $user_role = \Drupal\user\Entity\Role::load($role);
+    $user_role = Role::load($role);
     if (isset($user_role)) {
       foreach ($perms as $perm) {
-        \Drupal::logger('calibr8_civicrm')->notice("Set $perm for $user.");
+        \Drupal::logger('calibr8_civicrm')->notice("Set $perm for $user_role.");
         $user_role->grantPermission($perm);
       }
       $user_role->save();
