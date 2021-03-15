@@ -107,7 +107,7 @@ JSON;
     $user_role = Role::load($role);
     if (isset($user_role)) {
       foreach ($perms as $perm) {
-        \Drupal::logger('calibr8_civicrm')->notice("Set $perm for $user_role.");
+        \Drupal::logger('calibr8_civicrm')->notice("Set $perm for $role.");
         $user_role->grantPermission($perm);
       }
       $user_role->save();
