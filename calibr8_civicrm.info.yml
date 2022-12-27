@@ -2,7 +2,7 @@ name: Calibr8 CiviCRM Integration
 description: Everything functionally related to Drupal 8 and CiviCRM.
 package: CiviCRM
 type: module
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8 || ^9 || ^10
 
 dependencies:
 - civicrm
